@@ -2,7 +2,6 @@ import '../../domain/entities/flashcard.dart';
 import '../../domain/repositories/flashcard_repository.dart';
 import '../datasources/flashcards_remote_datasource.dart';
 
-/// Implementación del contrato [FlashcardRepository].
 class FlashcardRepositoryImpl implements FlashcardRepository {
   FlashcardRepositoryImpl(this._remote);
 

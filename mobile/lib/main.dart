@@ -10,8 +10,6 @@ import 'core/theme/app_theme.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Cargamos las preferencias antes de armar el grafo de dependencias, ya que
-  // el TokenStore necesita un SharedPreferences ya inicializado.
   final prefs = await SharedPreferences.getInstance();
   final composition = CompositionRoot(prefs);
 
@@ -25,7 +23,6 @@ class FlasherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Inyección manual: proveemos los ViewModels armados en el composition root.
     return MultiProvider(
       providers: composition.providers,
       child: MaterialApp(
@@ -33,7 +30,7 @@ class FlasherApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.light,
         darkTheme: AppTheme.dark,
-        // Si ya hay un token guardado, vamos directo a la lista; si no, al login.
+
         initialRoute: composition.isAuthenticated
             ? AppRoutes.flashcards
             : AppRoutes.login,

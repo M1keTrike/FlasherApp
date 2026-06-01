@@ -1,6 +1,5 @@
 import '../entities/flashcard.dart';
 
-/// Contrato abstracto del repositorio de flashcards.
 abstract class FlashcardRepository {
   Future<List<Flashcard>> getAll();
 

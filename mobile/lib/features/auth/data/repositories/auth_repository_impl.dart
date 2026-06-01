@@ -2,7 +2,6 @@ import '../../domain/entities/auth_result.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../datasources/auth_remote_datasource.dart';
 
-/// Implementación del contrato [AuthRepository] usando la fuente remota.
 class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this._remote);
 

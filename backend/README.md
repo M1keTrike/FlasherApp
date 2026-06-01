@@ -128,8 +128,12 @@ cp nginx/bootstrap/flasher-bootstrap.conf nginx/conf.d/
 # b) Levantar la base, la API y nginx
 docker compose up -d db api nginx
 
-# c) Emitir el certificado con Certbot en modo webroot (una sola vez)
-docker compose run --rm certbot certonly --webroot \
+# c) Emitir el certificado con Certbot en modo webroot (una sola vez).
+#    IMPORTANTE: el servicio certbot tiene un entrypoint con el bucle de
+#    auto-renovación, así que para la emisión inicial hay que sobrescribirlo
+#    con --entrypoint certbot; si no, el contenedor solo ejecuta "certbot renew"
+#    ("No renewals were attempted") y se queda colgado en el sleep de 12h.
+docker compose run --rm --entrypoint certbot certbot certonly --webroot \
   -w /var/www/certbot -d flasherapi.alphahills.site \
   --email TU_CORREO@example.com --agree-tos --no-eff-email
 

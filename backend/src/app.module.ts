@@ -8,10 +8,9 @@ import { HealthController } from './health/health.controller';
 
 @Module({
   imports: [
-    // Variables de entorno disponibles en toda la app.
+
     ConfigModule.forRoot({ isGlobal: true }),
 
-    // Configuración de TypeORM + PostgreSQL leída del entorno.
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
@@ -22,8 +21,7 @@ import { HealthController } from './health/health.controller';
         password: config.get<string>('DB_PASSWORD', 'flasher'),
         database: config.get<string>('DB_NAME', 'flasher_db'),
         autoLoadEntities: true,
-        // synchronize crea/actualiza el esquema automáticamente. Suficiente
-        // para este proyecto académico; en producción real se usarían migraciones.
+
         synchronize: true,
       }),
     }),

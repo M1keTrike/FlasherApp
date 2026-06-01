@@ -19,8 +19,6 @@ export class User {
   @Column({ unique: true })
   email: string;
 
-  // @Exclude() hace que el ClassSerializerInterceptor nunca incluya el
-  // password (ni su hash) en las respuestas JSON.
   @Exclude()
   @Column()
   password: string;

@@ -1,7 +1,6 @@
 import '../../../../core/network/api_client.dart';
 import '../models/user_model.dart';
 
-/// Resultado crudo de la API de autenticación (token + usuario).
 class AuthDto {
   AuthDto({required this.accessToken, required this.user});
 
@@ -9,7 +8,6 @@ class AuthDto {
   final UserModel user;
 }
 
-/// Fuente de datos remota: realiza las llamadas HTTP a /auth/*.
 class AuthRemoteDataSource {
   AuthRemoteDataSource(this._apiClient);
 

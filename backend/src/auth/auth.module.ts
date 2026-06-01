@@ -17,8 +17,7 @@ import { JwtStrategy } from './jwt.strategy';
       useFactory: (config: ConfigService) => ({
         secret: config.get<string>('JWT_SECRET', 'changeme'),
         signOptions: {
-          // El tipo de expiresIn es StringValue|number; el valor viene del
-          // entorno como string (p.ej. "7d"), por eso el cast.
+
           expiresIn: config.get<string>('JWT_EXPIRES_IN', '7d') as any,
         },
       }),

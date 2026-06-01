@@ -1,4 +1,3 @@
-/// Nombres de rutas (Navigation 1.0, rutas nombradas).
 class AppRoutes {
   const AppRoutes._();
 

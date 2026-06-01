@@ -42,8 +42,11 @@ class _RegisterViewState extends State<RegisterView> {
     } else {
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
-        ..showSnackBar(SnackBar(
-            content: Text(viewModel.errorMessage ?? 'Error al registrarse')));
+        ..showSnackBar(
+          SnackBar(
+            content: Text(viewModel.errorMessage ?? 'Error al registrarse'),
+          ),
+        );
     }
   }
 
@@ -67,8 +70,11 @@ class _RegisterViewState extends State<RegisterView> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Icon(Icons.person_add_alt_1_rounded,
-                        size: 64, color: scheme.primary),
+                    Icon(
+                      Icons.person_add_alt_1_rounded,
+                      size: 64,
+                      color: scheme.primary,
+                    ),
                     const SizedBox(height: 24),
                     TextFormField(
                       controller: _nameController,
@@ -107,9 +113,11 @@ class _RegisterViewState extends State<RegisterView> {
                         labelText: 'Contraseña',
                         prefixIcon: const Icon(Icons.lock_outline),
                         suffixIcon: IconButton(
-                          icon: Icon(_obscure
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined),
+                          icon: Icon(
+                            _obscure
+                                ? Icons.visibility_outlined
+                                : Icons.visibility_off_outlined,
+                          ),
                           onPressed: () => setState(() => _obscure = !_obscure),
                         ),
                       ),
