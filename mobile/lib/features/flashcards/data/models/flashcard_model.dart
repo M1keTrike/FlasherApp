@@ -1,6 +1,5 @@
 import '../../domain/entities/flashcard.dart';
 
-/// Modelo de datos de Flashcard: (de)serialización JSON.
 class FlashcardModel extends Flashcard {
   const FlashcardModel({
     required super.id,
@@ -18,10 +17,9 @@ class FlashcardModel extends Flashcard {
     );
   }
 
-  /// Cuerpo que se envía al crear/actualizar (la API ignora el resto).
   Map<String, dynamic> toJson() => {
-        'question': question,
-        'answer': answer,
-        'category': category,
-      };
+    'question': question,
+    'answer': answer,
+    'category': category,
+  };
 }

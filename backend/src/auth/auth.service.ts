@@ -26,7 +26,7 @@ export class AuthService {
   async register(dto: RegisterDto): Promise<AuthResponse> {
     const existing = await this.usersService.findByEmail(dto.email);
     if (existing) {
-      // 409: el email ya está registrado.
+
       throw new ConflictException('El email ya está registrado');
     }
 

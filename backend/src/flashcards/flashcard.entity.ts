@@ -22,8 +22,6 @@ export class Flashcard {
   @Column()
   category: string;
 
-  // Relación ManyToOne: cada flashcard pertenece a un usuario. onDelete CASCADE
-  // borra las tarjetas si se elimina el usuario.
   @ManyToOne(() => User, (user) => user.flashcards, { onDelete: 'CASCADE' })
   user: User;
 

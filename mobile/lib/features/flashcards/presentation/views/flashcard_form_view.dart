@@ -4,9 +4,6 @@ import 'package:provider/provider.dart';
 import '../../domain/entities/flashcard.dart';
 import '../viewmodels/flashcards_viewmodel.dart';
 
-/// Misma pantalla para crear y editar una flashcard.
-///
-/// Si recibe una [flashcard] => modo edición; si es null => modo creación.
 class FlashcardFormView extends StatefulWidget {
   const FlashcardFormView({super.key, this.flashcard});
 
@@ -27,12 +24,15 @@ class _FlashcardFormViewState extends State<FlashcardFormView> {
   @override
   void initState() {
     super.initState();
-    _questionController =
-        TextEditingController(text: widget.flashcard?.question ?? '');
-    _answerController =
-        TextEditingController(text: widget.flashcard?.answer ?? '');
-    _categoryController =
-        TextEditingController(text: widget.flashcard?.category ?? '');
+    _questionController = TextEditingController(
+      text: widget.flashcard?.question ?? '',
+    );
+    _answerController = TextEditingController(
+      text: widget.flashcard?.answer ?? '',
+    );
+    _categoryController = TextEditingController(
+      text: widget.flashcard?.category ?? '',
+    );
   }
 
   @override
@@ -68,9 +68,9 @@ class _FlashcardFormViewState extends State<FlashcardFormView> {
     if (ok) {
       Navigator.of(context).pop(true);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(viewModel.errorMessage ?? 'No se pudo guardar'),
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(viewModel.errorMessage ?? 'No se pudo guardar')),
+      );
     }
   }
 

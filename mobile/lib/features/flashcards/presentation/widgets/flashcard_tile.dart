@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../domain/entities/flashcard.dart';
 
-/// Tarjeta visual de una flashcard en la lista, con acciones de editar/eliminar.
 class FlashcardTile extends StatelessWidget {
   const FlashcardTile({
     super.key,

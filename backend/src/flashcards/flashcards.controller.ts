@@ -18,7 +18,6 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CurrentUser } from '../auth/current-user.decorator';
 import { User } from '../users/user.entity';
 
-// Todo el controlador queda protegido por el guard JWT: sin token válido => 401.
 @Controller('flashcards')
 @UseGuards(JwtAuthGuard)
 export class FlashcardsController {

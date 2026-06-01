@@ -1,7 +1,5 @@
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
-// Todos los campos son opcionales en la actualización; cuando se envían,
-// se validan igual que en la creación.
 export class UpdateFlashcardDto {
   @IsOptional()
   @IsString()

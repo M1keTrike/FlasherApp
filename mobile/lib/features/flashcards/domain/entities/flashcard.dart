@@ -1,4 +1,3 @@
-/// Entidad de dominio: una tarjeta de estudio.
 class Flashcard {
   const Flashcard({
     required this.id,

@@ -51,7 +51,7 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
-    // El ViewModel se observa con watch para reconstruir cuando cambia isLoading.
+
     final viewModel = context.watch<AuthViewModel>();
 
     return Scaffold(
@@ -60,10 +60,7 @@ class _LoginViewState extends State<LoginView> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              scheme.primaryContainer,
-              scheme.surface,
-            ],
+            colors: [scheme.primaryContainer, scheme.surface],
           ),
         ),
         child: SafeArea(
@@ -78,21 +75,26 @@ class _LoginViewState extends State<LoginView> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Icon(Icons.style_rounded,
-                          size: 72, color: scheme.primary),
+                      Icon(
+                        Icons.style_rounded,
+                        size: 72,
+                        color: scheme.primary,
+                      ),
                       const SizedBox(height: 16),
                       Text(
                         'Flasher',
                         textAlign: TextAlign.center,
-                        style: theme.textTheme.headlineMedium
-                            ?.copyWith(fontWeight: FontWeight.bold),
+                        style: theme.textTheme.headlineMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         'Estudia con tus tarjetas',
                         textAlign: TextAlign.center,
-                        style: theme.textTheme.bodyMedium
-                            ?.copyWith(color: scheme.onSurfaceVariant),
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: scheme.onSurfaceVariant,
+                        ),
                       ),
                       const SizedBox(height: 32),
                       TextFormField(
@@ -117,9 +119,11 @@ class _LoginViewState extends State<LoginView> {
                           labelText: 'Contraseña',
                           prefixIcon: const Icon(Icons.lock_outline),
                           suffixIcon: IconButton(
-                            icon: Icon(_obscure
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined),
+                            icon: Icon(
+                              _obscure
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined,
+                            ),
                             onPressed: () =>
                                 setState(() => _obscure = !_obscure),
                           ),
@@ -138,7 +142,9 @@ class _LoginViewState extends State<LoginView> {
                             ? const SizedBox(
                                 height: 22,
                                 width: 22,
-                                child: CircularProgressIndicator(strokeWidth: 2),
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
                               )
                             : const Text('Iniciar sesión'),
                       ),
@@ -146,8 +152,9 @@ class _LoginViewState extends State<LoginView> {
                       TextButton(
                         onPressed: viewModel.isLoading
                             ? null
-                            : () => Navigator.of(context)
-                                .pushNamed(AppRoutes.register),
+                            : () => Navigator.of(
+                                context,
+                              ).pushNamed(AppRoutes.register),
                         child: const Text('¿No tienes cuenta? Regístrate'),
                       ),
                     ],

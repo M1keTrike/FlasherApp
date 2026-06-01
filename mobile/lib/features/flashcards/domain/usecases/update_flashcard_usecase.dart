@@ -1,7 +1,6 @@
 import '../entities/flashcard.dart';
 import '../repositories/flashcard_repository.dart';
 
-/// Caso de uso: actualizar una flashcard.
 class UpdateFlashcardUseCase {
   const UpdateFlashcardUseCase(this._repository);
 

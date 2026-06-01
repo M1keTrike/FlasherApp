@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Tema Material 3 de la app.
-///
-/// Usa `ColorScheme.fromSeed` para derivar una paleta coherente a partir de un
-/// color semilla, tipografía y paddings uniformes.
 class AppTheme {
   const AppTheme._();
 
@@ -39,7 +35,10 @@ class AppTheme {
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide.none,
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 14,
+        ),
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(

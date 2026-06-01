@@ -1,7 +1,6 @@
 import '../entities/auth_result.dart';
 import '../repositories/auth_repository.dart';
 
-/// Caso de uso: registrar un nuevo usuario.
 class RegisterUseCase {
   const RegisterUseCase(this._repository);
 

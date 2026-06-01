@@ -8,10 +8,6 @@ import '../../features/flashcards/presentation/views/flashcards_list_view.dart';
 import '../../features/flashcards/presentation/views/study_view.dart';
 import 'app_routes.dart';
 
-/// Generador central de rutas (Navigation 1.0 imperativo con rutas nombradas).
-///
-/// Resuelve cada nombre de ruta a su View. Los argumentos (p. ej. la flashcard
-/// a editar) viajan en `settings.arguments`.
 class AppRouter {
   const AppRouter._();
 
@@ -27,7 +23,6 @@ class AppRouter {
         return _page(const FlashcardsListView(), settings);
 
       case AppRoutes.flashcardForm:
-        // Argumento opcional: la flashcard a editar (null => crear).
         final flashcard = settings.arguments as Flashcard?;
         return _page(FlashcardFormView(flashcard: flashcard), settings);
 
@@ -44,7 +39,13 @@ class AppRouter {
     }
   }
 
-  static MaterialPageRoute<dynamic> _page(Widget child, RouteSettings settings) {
-    return MaterialPageRoute<dynamic>(builder: (_) => child, settings: settings);
+  static MaterialPageRoute<dynamic> _page(
+    Widget child,
+    RouteSettings settings,
+  ) {
+    return MaterialPageRoute<dynamic>(
+      builder: (_) => child,
+      settings: settings,
+    );
   }
 }
