@@ -6,8 +6,6 @@ import 'package:provider/provider.dart';
 import '../../domain/entities/flashcard.dart';
 import '../viewmodels/flashcards_viewmodel.dart';
 
-/// Modo estudio: muestra una tarjeta a la vez. Al tocar, la tarjeta se voltea
-/// (animación 3D) para revelar la respuesta.
 class StudyView extends StatefulWidget {
   const StudyView({super.key});
 
@@ -95,10 +93,7 @@ class _StudyViewState extends State<StudyView>
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: GestureDetector(
                     onTap: _flip,
-                    child: _FlipCard(
-                      controller: _controller,
-                      card: card,
-                    ),
+                    child: _FlipCard(controller: _controller, card: card),
                   ),
                 ),
               ),
@@ -109,8 +104,7 @@ class _StudyViewState extends State<StudyView>
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   OutlinedButton.icon(
-                    onPressed:
-                        _index > 0 ? () => _go(-1, cards.length) : null,
+                    onPressed: _index > 0 ? () => _go(-1, cards.length) : null,
                     icon: const Icon(Icons.chevron_left),
                     label: const Text('Anterior'),
                   ),
@@ -140,8 +134,6 @@ class _StudyViewState extends State<StudyView>
   }
 }
 
-/// Tarjeta con animación de volteo 3D. Muestra la pregunta en la cara frontal
-/// y la respuesta en la trasera, usando una rotación sobre el eje Y.
 class _FlipCard extends StatelessWidget {
   const _FlipCard({required this.controller, required this.card});
 
@@ -155,7 +147,7 @@ class _FlipCard extends StatelessWidget {
       builder: (context, _) {
         final angle = controller.value * math.pi;
         final isBack = angle > math.pi / 2;
-        // Transformación de perspectiva + rotación en Y.
+
         final transform = Matrix4.identity()
           ..setEntry(3, 2, 0.001)
           ..rotateY(angle);
@@ -164,7 +156,6 @@ class _FlipCard extends StatelessWidget {
           alignment: Alignment.center,
           transform: transform,
           child: isBack
-              // La cara trasera se "des-voltea" para que el texto no salga espejado.
               ? Transform(
                   alignment: Alignment.center,
                   transform: Matrix4.identity()..rotateY(math.pi),
@@ -200,8 +191,7 @@ class _CardFace extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final bg = primary ? scheme.primaryContainer : scheme.tertiaryContainer;
-    final fg =
-        primary ? scheme.onPrimaryContainer : scheme.onTertiaryContainer;
+    final fg = primary ? scheme.onPrimaryContainer : scheme.onTertiaryContainer;
 
     return Container(
       width: double.infinity,
@@ -237,10 +227,10 @@ class _CardFace extends StatelessWidget {
           Text(
             text,
             textAlign: TextAlign.center,
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall
-                ?.copyWith(color: fg, fontWeight: FontWeight.w600),
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              color: fg,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ],
       ),

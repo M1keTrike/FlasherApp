@@ -18,17 +18,16 @@ class _FlashcardsListViewState extends State<FlashcardsListView> {
   @override
   void initState() {
     super.initState();
-    // Carga inicial tras el primer frame (el ViewModel ya está provisto).
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<FlashcardsViewModel>().load();
     });
   }
 
   Future<void> _openForm({Flashcard? flashcard}) async {
-    final changed = await Navigator.of(context).pushNamed(
-      AppRoutes.flashcardForm,
-      arguments: flashcard,
-    );
+    final changed = await Navigator.of(
+      context,
+    ).pushNamed(AppRoutes.flashcardForm, arguments: flashcard);
     if (changed == true && mounted) {
       context.read<FlashcardsViewModel>().load();
     }
@@ -58,18 +57,21 @@ class _FlashcardsListViewState extends State<FlashcardsListView> {
     final viewModel = context.read<FlashcardsViewModel>();
     final ok = await viewModel.delete(flashcard.id);
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(ok ? 'Tarjeta eliminada' : (viewModel.errorMessage ?? 'Error')),
-    ));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          ok ? 'Tarjeta eliminada' : (viewModel.errorMessage ?? 'Error'),
+        ),
+      ),
+    );
   }
 
   Future<void> _logout() async {
     await context.read<AuthViewModel>().logout();
     if (!mounted) return;
-    Navigator.of(context).pushNamedAndRemoveUntil(
-      AppRoutes.login,
-      (route) => false,
-    );
+    Navigator.of(
+      context,
+    ).pushNamedAndRemoveUntil(AppRoutes.login, (route) => false);
   }
 
   @override
@@ -146,7 +148,6 @@ class _FlashcardsListViewState extends State<FlashcardsListView> {
   }
 }
 
-/// Estado vacío / de error reutilizable.
 class _Message extends StatelessWidget {
   const _Message({
     required this.icon,
@@ -178,10 +179,7 @@ class _Message extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(color: scheme.onSurfaceVariant),
             ),
-            if (action != null) ...[
-              const SizedBox(height: 24),
-              action!,
-            ],
+            if (action != null) ...[const SizedBox(height: 24), action!],
           ],
         ),
       ),

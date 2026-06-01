@@ -1,6 +1,5 @@
 import '../repositories/flashcard_repository.dart';
 
-/// Caso de uso: eliminar una flashcard.
 class DeleteFlashcardUseCase {
   const DeleteFlashcardUseCase(this._repository);
 

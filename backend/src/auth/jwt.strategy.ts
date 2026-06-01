@@ -23,8 +23,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  // Lo que retorna este método se inyecta en request.user. Validamos que el
-  // usuario del token siga existiendo.
   async validate(payload: JwtPayload): Promise<User> {
     const user = await this.usersService.findById(payload.sub);
     if (!user) {
