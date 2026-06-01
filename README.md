@@ -17,9 +17,7 @@ FlasherApp/
   mobile/            ← App Flutter (Clean Architecture + MVVM)
 ```
 
-La API se despliega en EC2 detrás de Nginx con SSL de Let's Encrypt en
-**https://flasherapi.alphahills.site**. La carpeta `mobile/` **no** se despliega
-en el servidor; es la app cliente que consume esa API.
+
 
 ---
 
@@ -80,15 +78,3 @@ Cada flashcard pertenece a un usuario; un usuario solo ve/edita/elimina sus
 propias tarjetas (filtrado por el usuario del JWT en el backend).
 
 ---
-
-## Plan de ejecución (cumplido)
-
-- **Fase 1 — Fundación + Autenticación:** scaffolding del backend y la app,
-  infraestructura Docker/Nginx/Certbot, registro/login con JWT + bcrypt,
-  navegación a la home tras autenticarse.
-- **Fase 2 — CRUD de Flashcards:** entidad y módulo de flashcards protegidos
-  por JWT, y la app con lista, formulario crear/editar, borrado con
-  confirmación y modo estudio con animación de volteo.
-
-Documentación de apoyo para el informe: [`docs/INFORME.md`](docs/INFORME.md)
-y los prompts representativos en [`docs/PROMPTS.md`](docs/PROMPTS.md).
