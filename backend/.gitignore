@@ -1,0 +1,20 @@
+# Dependencies
+/node_modules
+
+# Build output
+/dist
+
+# Env
+.env
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# Certbot issued certs / challenge data (not source)
+/certbot/conf/*
+/certbot/www/*
+!/certbot/conf/.gitkeep
+!/certbot/www/.gitkeep
